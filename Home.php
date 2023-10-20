@@ -1,3 +1,9 @@
+<html>
+    <head>
+        <h1>Home</h1>
+    </head>
+    <body>
+        <h3>Hello !!!</h3>
 <?php
 $serveur = "localhost";
 $utilisateur = "root";
@@ -30,3 +36,8 @@ try {
        
     }
 ?>  
+
+
+
+    </body>
+</html>
