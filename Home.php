@@ -3,17 +3,20 @@
     <link rel="stylesheet" href="assert/style.css">
   <body>
     <header>
-      <h1>Mon Portfolio</h1>
+      <h1>AspireSport</h1>
       <nav>
         <ul>
-          <li><a href= >Accueil</a></li>
-          <li><a href= >Epreuve E4</a></li>
-          <li><a href= >Epreuve E5</a></li>
+          <li><a href= >Menu</a></li>
+          <li><a href= >Personnel</a></li>
+          <li><a href= >Equipes</a></li>
+          <li><a href= >Planning</a></li>
+          <li><a href= >Sports</a></li>
         </ul>
       </nav>
     </header>
-    <body>
-        <h3>Hello !!!</h3>
+        <body>
+            <main>
+                <section>
 <?php
 $serveur = "localhost";
 $utilisateur = "root";
@@ -34,26 +37,25 @@ try {
     $requete->execute();
     
     $resultats = $requete->fetchAll(PDO::FETCH_ASSOC);
-
+    
     
     foreach ($resultats as $utilisateur) {  
 
         if($nom == $utilisateur['nom'] && $mdp == $utilisateur['mdp'] ){
                         
-            echo $utilisateur['nom'].'</br>';
-            echo $utilisateur['prenom'].'</br>';
-            echo $utilisateur['age'].'</br>';
-            echo $utilisateur['poids'].'</br>';
-            echo $utilisateur['taille'].'</br>';
-            echo $utilisateur['sexe'].'</br>';
-            echo $utilisateur['IMC'].'</br>';
+            echo '<section><h2> Bienvenue '.$utilisateur['nom'].' '. $utilisateur['prenom'].'</h2></section>'.
+            '<main><p>'.$utilisateur['age'].'</p></main>'.
+            '<p>'.$utilisateur['poids'].'</p>'.
+            '<p>'.$utilisateur['taille'].'</p>'.
+            '<p>'.$utilisateur['sexe'].'</p>'.
+            '<p>'.$utilisateur['IMC'].'</p>';
         }else{
             echo 'Le nom '.$nom.' ou mot de passe NOT CORRECT '.'</br>';
         }
     }
 ?>  
 
-
-
-    </body>
+                    </section>
+                </main>
+            </body>
 </html>
