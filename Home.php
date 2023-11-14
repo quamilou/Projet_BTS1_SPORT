@@ -1,3 +1,6 @@
+<?php //1-
+require "CBDD.php";
+?>
 <html>
     <head>
     <link rel="stylesheet" href="assert/style.css">
@@ -6,56 +9,47 @@
       <h1>AspireSport</h1>
       <nav>
         <ul>
-          <li><a href= >Menu</a></li>
-          <li><a href= >Personnel</a></li>
+          <li><a href=#>Menu</a></li>
+          <li><a href=>Personnel</a></li>
           <li><a href= >Equipes</a></li>
           <li><a href= >Planning</a></li>
-          <li><a href= >Sports</a></li>
+          <li><a href=Sport.php>Sports</a></li>
         </ul>
       </nav>
     </header>
         <body>
             <main>
-                <section>
-<?php
-$serveur = "localhost";
-$utilisateur = "root";
-$motDePasse = "";
-$baseDeDonnees = "aspiresport_bdd";
+<?php //2-
+session_start();
+  foreach ($resultats as $utilisateur) {  
 
-$nom = $_POST['nom'];
-$mdp = $_POST['mdp'];
-
-try {
-        $connexion = new PDO("mysql:host=$serveur;dbname=$baseDeDonnees",$utilisateur,$motDePasse);
-    
-    } catch (PDOException $e) {
-        die ("pas connecter :" . $e->getMessage());
+    if($nom == $utilisateur['nom'] && $mdp == $utilisateur['mdp'] ){
+                    
+        echo '<h2> Bienvenue '.$utilisateur['nom'].' '. $utilisateur['prenom'].'</h2>';
+    }else{
+        echo 'Le nom et/ou mot de passe "NOT CORRECT" ';
     }
-    
-    $requete = $connexion->prepare("SELECT * FROM client WHERE nom = '$nom' AND mdp = '$mdp'");
-    $requete->execute();
-    
-    $resultats = $requete->fetchAll(PDO::FETCH_ASSOC);
-    
-    
+  }
+?>
+          <section>
+<?php //3-
+?>
+          </section>
+            </main>
+<?php //4-
     foreach ($resultats as $utilisateur) {  
 
         if($nom == $utilisateur['nom'] && $mdp == $utilisateur['mdp'] ){
-                        
-            echo '<section><h2> Bienvenue '.$utilisateur['nom'].' '. $utilisateur['prenom'].'</h2></section>'.
-            '<main><p>'.$utilisateur['age'].'</p></main>'.
+    
+            echo '<main><p>'.$utilisateur['age'].'</p>'.
             '<p>'.$utilisateur['poids'].'</p>'.
             '<p>'.$utilisateur['taille'].'</p>'.
             '<p>'.$utilisateur['sexe'].'</p>'.
-            '<p>'.$utilisateur['IMC'].'</p>';
-        }else{
-            echo 'Le nom '.$nom.' ou mot de passe NOT CORRECT '.'</br>';
+            '<p>'.$utilisateur['IMC'].'</p></main>';
         }
     }
 ?>  
 
-                    </section>
-                </main>
+
             </body>
 </html>
