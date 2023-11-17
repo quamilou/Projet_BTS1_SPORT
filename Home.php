@@ -1,55 +1,44 @@
-<?php //1-
+<?php
 require "CBDD.php";
-?>
-<html>
-    <head>
-    <link rel="stylesheet" href="assert/style.css">
-  <body>
-    <header>
-      <h1>AspireSport</h1>
-      <nav>
-        <ul>
-          <li><a href=#>Menu</a></li>
-          <li><a href=>Personnel</a></li>
-          <li><a href= >Equipes</a></li>
-          <li><a href= >Planning</a></li>
-          <li><a href=Sport.php>Sports</a></li>
-        </ul>
-      </nav>
-    </header>
-        <body>
-            <main>
-<?php //2-
 session_start();
-  foreach ($resultats as $utilisateur) {  
 
-    if($nom == $utilisateur['nom'] && $mdp == $utilisateur['mdp'] ){
-                    
-        echo '<h2> Bienvenue '.$utilisateur['nom'].' '. $utilisateur['prenom'].'</h2>';
-    }else{
-        echo 'Le nom et/ou mot de passe "NOT CORRECT" ';
-    }
-  }
+if (!isset($_SESSION['user'])) {
+    // redirige vers la page connexion
+    header('Location: index.html');
+    exit;
+}
+
+$utilisateur = $_SESSION['user'];
 ?>
-          <section>
-<?php //3-
-?>
-          </section>
-            </main>
-<?php //4-
-    foreach ($resultats as $utilisateur) {  
-
-        if($nom == $utilisateur['nom'] && $mdp == $utilisateur['mdp'] ){
-    
-            echo '<main><p>'.$utilisateur['age'].'</p>'.
-            '<p>'.$utilisateur['poids'].'</p>'.
-            '<p>'.$utilisateur['taille'].'</p>'.
-            '<p>'.$utilisateur['sexe'].'</p>'.
-            '<p>'.$utilisateur['IMC'].'</p></main>';
-        }
-    }
-?>  
-
-
-            </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>AspireSport</title>
+    <link rel="stylesheet" href="assert/style.css">
+</head>
+<body>
+    <header>
+        <h1>AspireSport</h1>
+        <nav>
+            <ul>
+                <li><a href="home.php">Menu</a></li>
+                <li><a href="personnel.php">Personnel</a></li>
+                <li><a href="equipes.php">Equipes</a></li>
+                <li><a href="planning.php">Planning</a></li>
+                <li><a href="sport.php">Sports</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>Bienvenue <?php echo htmlspecialchars($utilisateur['nom']); ?> <?php echo htmlspecialchars($utilisateur['prenom']); ?></h2>
+        <section>
+            <p>Age: <?php echo htmlspecialchars($utilisateur['age']); ?></p>
+            <p>Poids: <?php echo htmlspecialchars($utilisateur['poids']); ?></p>
+            <p>Taille: <?php echo htmlspecialchars($utilisateur['taille']); ?></p>
+            <p>Sexe: <?php echo htmlspecialchars($utilisateur['sexe']); ?></p>
+            <p>IMC: <?php echo htmlspecialchars($utilisateur['IMC']); ?></p>
+        </section>
+    </main>
+</body>
 </html>
