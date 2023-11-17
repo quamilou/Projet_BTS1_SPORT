@@ -6,12 +6,13 @@ if (!isset($_SESSION['user'])) {
     header('Location: index.html');
     exit;
 }
+$utilisateur = $_SESSION['user'];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Equipes - AspireSport</title>
+    <title>Personnel - AspireSport</title>
     <link rel="stylesheet" href="assert/style.css">
 </head>
 <body>
@@ -28,8 +29,8 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
     <main>
-        <h2>Page des Sports</h2>
-        
+        <h2><?php echo htmlspecialchars($utilisateur['nom']); ?> <?php echo htmlspecialchars($utilisateur['prenom']); ?></h2>
+    
     </main>
 </body>
 </html>

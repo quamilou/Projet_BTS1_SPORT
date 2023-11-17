@@ -11,7 +11,7 @@ if (!isset($_SESSION['user'])) {
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Equipes - AspireSport</title>
+    <title>Planning - AspireSport</title>
     <link rel="stylesheet" href="assert/style.css">
 </head>
 <body>
@@ -28,7 +28,7 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
     <main>
-        <h2>Page des Sports</h2>
+        <h2>Page de Planning</h2>
         
     </main>
 </body>

@@ -28,7 +28,7 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
     <main>
-        <h2>Page des Sports</h2>
+        <h2>Page des Equipes</h2>
         
     </main>
 </body>
