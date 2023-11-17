@@ -1,9 +1,9 @@
 <?php
-require "CBDD.php";
+require "../model/CBDD.php";
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header('Location: index.html');
+    header('Location: ../vue/index.html');
     exit;
 }
 $utilisateur = $_SESSION['user'];
@@ -13,18 +13,18 @@ $utilisateur = $_SESSION['user'];
 <head>
     <meta charset="UTF-8">
     <title>Personnel - AspireSport</title>
-    <link rel="stylesheet" href="assert/style.css">
+    <link rel="stylesheet" href="../assert/style.css">
 </head>
 <body>
     <header>
         <h1>AspireSport</h1>
         <nav>
             <ul>
-                <li><a href="Home.php">Menu</a></li>
-                <li><a href="Personnel.php">Personnel</a></li>
-                <li><a href="Equipes.php">Equipes</a></li>
-                <li><a href="Planning.php">Planning</a></li>
-                <li><a href="Sport.php">Sports</a></li>
+                <li><a href="../vue/Home.php">Menu</a></li>
+                <li><a href="../vue/Personnel.php">Personnel</a></li>
+                <li><a href="../vue/Equipes.php">Equipes</a></li>
+                <li><a href="../vue/Planning.php">Planning</a></li>
+                <li><a href="../vue/Sport.php">Sports</a></li>
             </ul>
         </nav>
     </header>

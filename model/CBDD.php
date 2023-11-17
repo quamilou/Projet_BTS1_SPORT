@@ -4,6 +4,8 @@ $utilisateur = "root";
 $motDePasse = "";
 $baseDeDonnees = "aspiresport_bdd";
 
+session_start();
+
 $nom = $_POST['nom'];
 $mdp = $_POST['mdp'];
 
