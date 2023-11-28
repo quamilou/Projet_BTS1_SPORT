@@ -1,16 +1,16 @@
 <?php
 require "../model/CBDD.php";
+session_start();
 
 if (!isset($_SESSION['user'])) {
     // redirige vers la page connexion
-    header('Location: ../vue/index.html');
+    header('Location: ../vue/testform.html');
     exit;
 }
 
 $utilisateur = $_SESSION['user'];
 
 ?>
-<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
