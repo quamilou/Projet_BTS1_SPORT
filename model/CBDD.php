@@ -11,7 +11,8 @@ $mdp = $_POST['mdp'];
 
 try {
         $connexion = new PDO("mysql:host=$serveur;dbname=$baseDeDonnees",$utilisateur,$motDePasse);
-    } catch (PDOException $e) {
+    } catch (PDOException $e) 
+    {
         die ("pas connecter :" . $e->getMessage());
     }
     $requete = $connexion->prepare("SELECT * FROM client WHERE nom = '$nom' AND mdp = '$mdp'");

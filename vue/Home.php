@@ -1,6 +1,7 @@
 <?php
 require "../model/CBDD.php";
-session_start();
+$utilisateur = $_POST['nom'];
+$_SESSION['user'] = $_POST['nom'];
 
 if (!isset($_SESSION['user'])) {
     // redirige vers la page connexion
@@ -8,7 +9,6 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$utilisateur = $_SESSION['user'];
 
 ?>
 <html lang="fr">
