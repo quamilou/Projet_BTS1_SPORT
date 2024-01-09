@@ -1,6 +1,6 @@
 <?php
 require "../model/CBDD.php";
-$utilisateur = $_POST['nom'];
+$client = $_POST['nom'];
 $_SESSION['user'] = $_POST['nom'];
 
 if (!isset($_SESSION['user'])) {
@@ -33,12 +33,12 @@ if (!isset($_SESSION['user'])) {
     <main>
         <h2>Menu</h2>
         <section>
-            <p>Age: <?php echo htmlspecialchars($utilisateur['age']); ?></p>
-            <p>Poids: <?php echo htmlspecialchars($utilisateur['poids']); ?></p>
-            <p>Taille: <?php echo htmlspecialchars($utilisateur['taille']); ?></p>
-            <p>Sexe: <?php echo htmlspecialchars($utilisateur['sexe']); ?></p>
-            <p>IMC: <?php echo htmlspecialchars($utilisateur['IMC']); ?></p>
-            <p>mdp: <?php echo htmlspecialchars($utilisateur['mdp']); ?></p>
+            <p>Age: <?php echo $client['age']; ?></p>
+            <p>Poids: <?php echo htmlspecialchars($client['poids']); ?></p>
+            <p>Taille: <?php echo htmlspecialchars($client['taille']); ?></p>
+            <p>Sexe: <?php echo htmlspecialchars($client['sexe']); ?></p>
+            <p>IMC: <?php echo htmlspecialchars($client['IMC']); ?></p>
+            <p>mdp: <?php echo htmlspecialchars($client['mdp']); ?></p>
         </section>
     </main>
 </body>
