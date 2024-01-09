@@ -13,7 +13,21 @@ Class User{
     private $type;
     private $IMC;
 
-    
+    public function __construct($Id_Client, $nom, $prenom, $mdp, $age, $poids, $taille, $sexe, $type, $IMC){
+        $this->Id_Client = $Id_Client;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->mdp = $mdp;
+        $this->age = $age;
+        $this->poids = $poids;
+        $this->taille = $taille;
+        $this->sexe = $sexe;
+        $this->type = $type;
+        $this->IMC = $IMC;
+
+    }
+
+    public function getId
 }
 
 ?>
