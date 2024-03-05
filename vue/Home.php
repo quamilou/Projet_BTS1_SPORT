@@ -33,12 +33,12 @@ if (!isset($_SESSION['user'])) {
     <main>
         <h2>Menu</h2>
         <section>
-            <p>Age: <?php echo $client['age']; ?></p>
-            <p>Poids: <?php echo htmlspecialchars($client['poids']); ?></p>
-            <p>Taille: <?php echo htmlspecialchars($client['taille']); ?></p>
-            <p>Sexe: <?php echo htmlspecialchars($client['sexe']); ?></p>
-            <p>IMC: <?php echo htmlspecialchars($client['IMC']); ?></p>
-            <p>mdp: <?php echo htmlspecialchars($client['mdp']); ?></p>
+            <p>Age: <?php echo $client; ?></p>
+            <p>Poids: <?php echo htmlspecialchars($client); ?></p>
+            <p>Taille: <?php echo htmlspecialchars($client); ?></p>
+            <p>Sexe: <?php echo htmlspecialchars($client); ?></p>
+            <p>IMC: <?php echo htmlspecialchars($client); ?></p>
+            <p>mdp: <?php echo htmlspecialchars($client); ?></p>
         </section>
     </main>
 </body>
