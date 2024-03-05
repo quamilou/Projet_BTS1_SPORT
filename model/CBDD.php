@@ -6,7 +6,7 @@ $baseDeDonnees = "aspiresport_bdd";
 
 session_start();
 
-$nom = $_POST['nom'];
+$nom = $_SESSION['user'];
 $mdp = $_POST['mdp'];
 
 try {
@@ -19,4 +19,5 @@ try {
     $requete->execute();
     
     $resultats = $requete->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
