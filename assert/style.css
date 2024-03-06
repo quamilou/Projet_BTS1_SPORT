@@ -78,6 +78,20 @@ body {
     height: auto;
   }
   
+  table {
+
+    /* padding: 20px; */
+    background-color: #00559661;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+
+  tr {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
   /* Style pour le footer de la page */
   footer {
     background-color: #005596;
