@@ -1,16 +1,9 @@
 <?php
-require "../model/CBDD.php";
-$client = $_POST['nom'];
-$_SESSION['user'] = $_POST['nom'];
-
-if (!isset($_SESSION['user'])) {
-    // redirige vers la page connexion
-    header('Location: ../vue/testform.html');
-    exit;
-}
+session_start();
 
 
 ?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -33,12 +26,11 @@ if (!isset($_SESSION['user'])) {
     <main>
         <h2>Menu</h2>
         <section>
-            <p>Age: <?php echo $client; ?></p>
-            <p>Poids: <?php echo htmlspecialchars($client); ?></p>
-            <p>Taille: <?php echo htmlspecialchars($client); ?></p>
-            <p>Sexe: <?php echo htmlspecialchars($client); ?></p>
-            <p>IMC: <?php echo htmlspecialchars($client); ?></p>
-            <p>mdp: <?php echo htmlspecialchars($client); ?></p>
+            <p>Age:     <?php echo $_SESSION['user']['age']; ?></p>
+            <p>Poids:   <?php echo $_SESSION['user']['poids']; ?></p>
+            <p>Taille:  <?php echo $_SESSION['user']['taille']; ?></p>
+            <p>Sexe:    <?php echo $_SESSION['user']['sexe']; ?></p>
+            <p>IMC:     <?php echo $_SESSION['user']['IMC']; ?></p>
         </section>
     </main>
 </body>
