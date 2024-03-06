@@ -1,3 +1,7 @@
+<?php
+require "../model/CBDD.php";
+session_start();
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -23,56 +27,60 @@
             <input type="text" name="recherche" placeholder="Rechercher un sport...">
             <input type="submit" value="Rechercher">
         </form>
+        <form action="../controller/inscription_sport.php" method="post">
+            <?php
+            require "../model/CBDD.php";
 
-    <?php
-    require "../model/CBDD.php";
+            $recherche = isset($_GET['recherche']) ? $_GET['recherche'] : '';
 
-    $recherche = isset($_GET['recherche']) ? $_GET['recherche'] : '';
+            $sql = "SELECT * FROM sport WHERE nom_sport LIKE :recherche OR :recherche = ''";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':recherche', '%' . $recherche . '%');
+            $stmt->execute();
+            $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $sql = "SELECT * FROM sport WHERE nom_sport LIKE :recherche OR :recherche = ''";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':recherche', '%' . $recherche . '%');
-    $stmt->execute();
-    $sports = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if ($sports) {
-        echo "<ul>";
-        foreach ($sports as $sport) {
-            echo "<main>".htmlspecialchars($sport['nom_sport']). "</main>" ;
-            // Formulaire d'inscription
-            echo "<form action='../controller/inscription_sport.php' method='post' style='display:inline;'>";
-            echo "<input type='hidden' name='idSport' value='" . $sport['Id_Sport'] . "'>";
-            echo "<input type='submit' value='S'inscrire'>";
-            echo "</form>";
-            echo "</li>";
-        }
-        echo "</ul>";
-    } else {
-        echo "<p>Aucun sport trouvé.</p>";
-    }
-    ?>
+            foreach($sports as $sport) {
+                echo "<div><input type='checkbox' name='idSport[]' value='" . $sport['Id_Sport'] . "'>" . htmlspecialchars($sport['nom_sport']) . "</div>";
+            }
+            ?>
+         <input type="submit" value="S'inscrire aux sports sélectionnés">
+        </form>
     </main>
     <main>
-        <h2>Tes Sports</h2>    
+        <h2>Mes Sports</h2>    
         <?php
-            // Récupère l'ID de l'utilisateur
-            $idClient = $_SESSION['user']['Id_Client'];
+        $idClient = $_SESSION['user']['Id_Client'];
+        $stmt = $pdo->prepare("SELECT s.Id_Sport, s.nom_sport FROM sport s INNER JOIN pratique p ON s.Id_Sport = p.Id_Sport WHERE p.Id_Client = :idClient");
+        $stmt->execute(['idClient' => $idClient]);
+        $mesSports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            // Sélectionne tous les sports auxquels l'utilisateur est inscrit
+        if ($mesSports) {
+            echo "<ul>";
+            foreach ($mesSports as $monSport) {
+                echo "<main>" . htmlspecialchars($monSport['nom_sport']) . "</main>";
+            }
+            echo "</ul>";
+        }
+        ?>
+        <main>
+        <form action="../controller/desinscription_sport.php" method="post">
+            <?php
+            $idClient = $_SESSION['user']['Id_Client'];
             $stmt = $pdo->prepare("SELECT s.Id_Sport, s.nom_sport FROM sport s INNER JOIN pratique p ON s.Id_Sport = p.Id_Sport WHERE p.Id_Client = :idClient");
             $stmt->execute(['idClient' => $idClient]);
             $mesSports = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             if ($mesSports) {
-                echo "<ul>";
                 foreach ($mesSports as $monSport) {
-                    echo "<li>" . htmlspecialchars($monSport['nom_sport']) . "</li>";
+                    echo "<div><input type='checkbox' name='idSport[]' value='" . $monSport['Id_Sport'] . "'>" . htmlspecialchars($monSport['nom_sport']) . "</div>";
                 }
-                echo "</ul>";
+                echo "<input type='submit' value='Se désinscrire des sports sélectionnés'>";
             } else {
                 echo "<p>Vous n'êtes inscrit à aucun sport.</p>";
             }
-        ?>
+            ?>
+        </form>
+        </main>
     </main>
 </body>
 </html>
