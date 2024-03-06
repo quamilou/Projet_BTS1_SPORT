@@ -1,11 +1,6 @@
 <?php
 require "../model/CBDD.php";
 session_start();
-
-if (!isset($_SESSION['user'])) {
-    header('Location: ../vue/index.html');
-    exit;
-}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,7 +50,7 @@ if (!isset($_SESSION['user'])) {
     </main>
     <!--Supp-->
     <main>
-        <h2>Tes Equipes</h2>
+        <h2>Mes Equipes</h2>
         <form>
             <?php
                 $utilisateurId = $_SESSION['user']['Id_Client'];
