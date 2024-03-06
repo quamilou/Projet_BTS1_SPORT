@@ -28,7 +28,11 @@ if (!isset($_SESSION['user'])) {
         </nav>
     </header>
     <main>
-        <h2>Page de Planning</h2>
+        <h2>Page de Planning Personnel</h2>
+        
+    </main>
+    <main>
+        <h2>Page de Planning Equipes</h2>
         
     </main>
 </body>
