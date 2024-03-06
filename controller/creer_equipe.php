@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['nomEquipe'])) {
     $dateCreation = date('Y-m-d');
 
     // Création de l'équipe
-    $stmt = $pdo->prepare("INSERT INTO equipe (nom_groupe, date_creation) VALUES (:nomEquipe, dateCreation)");
+    $stmt = $pdo->prepare("INSERT INTO equipe (nom_groupe, date_creation) VALUES (:nomEquipe, :dateCreation)");
     if ($stmt->execute(['nomEquipe' => $nomEquipe, 'dateCreation' => $dateCreation])) {
         // Récupère l'ID de l'équipe créée
         $equipeId = $pdo->lastInsertId();
