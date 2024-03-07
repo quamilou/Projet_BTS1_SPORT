@@ -25,6 +25,7 @@ session_start();
                 <li><a href="../vue/Equipes.php">Equipes</a></li>
                 <li><a href="../vue/Planning.php">Planning</a></li>
                 <li><a href="../vue/Sport.php">Sports</a></li>
+                <li><a href="../controller/deconnexion.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
@@ -52,7 +53,7 @@ session_start();
                 <label for="titre">Titre:</label>
                 <input type="text" id="titre" name="titre" required><br>
 
-                <label for="nom_planning">Nom du Planning:</label>
+                <label for="nom_planning">Nom de l'événement:</label>
                 <input type="text" id="nom_planning" name="nom_planning" required><br>
 
                 <label for="date_heure">Date et Heure:</label>
