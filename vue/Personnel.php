@@ -22,6 +22,7 @@ $utilisateur = $_SESSION['user'];
                 <li><a href="../vue/Equipes.php">Equipes</a></li>
                 <li><a href="../vue/Planning.php">Planning</a></li>
                 <li><a href="../vue/Sport.php">Sports</a></li>
+                <li><a href="../controller/deconnexion.php">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
