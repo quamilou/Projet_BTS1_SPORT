@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 06 mars 2024 à 05:12
+-- Généré le : jeu. 07 mars 2024 à 00:53
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `aspiresport_bdd`
 --
+CREATE DATABASE IF NOT EXISTS `aspiresport_bdd` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `aspiresport_bdd`;
 
 -- --------------------------------------------------------
 
@@ -40,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `appartient` (
 --
 
 INSERT INTO `appartient` (`Id_Client`, `Id_Equipe`) VALUES
-(4, 1),
 (4, 2),
 (4, 5),
 (4, 13);
@@ -64,18 +65,20 @@ CREATE TABLE IF NOT EXISTS `client` (
   `type` int DEFAULT NULL,
   `IMC` decimal(15,2) DEFAULT NULL,
   PRIMARY KEY (`Id_Client`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `client`
 --
 
 INSERT INTO `client` (`Id_Client`, `nom`, `prenom`, `mdp`, `age`, `poids`, `taille`, `sexe`, `type`, `IMC`) VALUES
-(1, 'Martin', 'Sophie', 'sophie123', '1990-08-25', 58.70, 160, 2, 1, 22.89),
+(1, 'admin', 'Quentin', 'admin', '1999-07-03', 58.70, 170, 1, 3, 22.89),
 (2, 'Johnson', 'Michael', 'mike456', '1985-04-12', 85.30, 180, 1, 1, 26.35),
 (3, 'Lefebvre', 'Julie', 'juliepwd', '1992-12-30', 63.90, 165, 2, 2, 23.46),
 (4, 'li', 'Chen', 'li', '1987-06-08', 72.70, 170, 1, 2, 25.21),
-(5, 'Gonzalez', 'Carlos', 'carlos99', '1998-02-17', 75.50, 175, 1, 1, 24.65);
+(5, 'Gonzalez', 'Carlos', 'carlos99', '1998-02-17', 75.50, 175, 1, 1, 24.65),
+(6, 'saenz', 'quentin', '$2y$10$A8qJhVSdet7B.KUnrz/PdeGN.chW97wJeuNz0Nrrw91', '1999-07-03', 70.00, 175, 1, 3, 22.00),
+(7, 'saenz', 'quentin', '11', '1999-07-03', 70.00, 175, 1, 3, 22.00);
 
 -- --------------------------------------------------------
 
@@ -103,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
   `nom_groupe` varchar(50) DEFAULT NULL,
   `date_creation` date DEFAULT NULL,
   PRIMARY KEY (`Id_Equipe`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `equipe`
@@ -131,11 +134,22 @@ CREATE TABLE IF NOT EXISTS `planning` (
   `titre` varchar(50) DEFAULT NULL,
   `date_heure` datetime DEFAULT NULL,
   `nom_planning` varchar(50) DEFAULT NULL,
-  `durée` time DEFAULT NULL,
+  `durée` int DEFAULT NULL,
   `Id_Client` int NOT NULL,
   PRIMARY KEY (`Id_Planning`),
   KEY `Id_Client` (`Id_Client`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `planning`
+--
+
+INSERT INTO `planning` (`Id_Planning`, `titre`, `date_heure`, `nom_planning`, `durée`, `Id_Client`) VALUES
+(1, 'Entraînement Marathon', '2024-04-05 08:00:00', 'Marathon Avril', 120, 1),
+(2, 'Séance Yoga', '2024-04-06 10:00:00', 'Yoga Matinal', 60, 2),
+(3, 'Cours de Natation', '2024-04-07 15:00:00', 'Natation Débutant', 90, 3),
+(4, 'Workshop Boxe', '2024-04-08 18:00:00', 'Boxe Intermédiaire', 60, 4),
+(5, 'Tournoi Tennis', '2024-04-09 09:00:00', 'Tennis Printemps', 180, 5);
 
 -- --------------------------------------------------------
 
@@ -156,9 +170,13 @@ CREATE TABLE IF NOT EXISTS `pratique` (
 --
 
 INSERT INTO `pratique` (`Id_Client`, `Id_Sport`) VALUES
-(4, 1),
+(4, 0),
 (4, 2),
-(4, 19);
+(4, 5),
+(4, 14),
+(4, 15),
+(4, 16),
+(4, 17);
 
 -- --------------------------------------------------------
 
@@ -171,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `sport` (
   `Id_Sport` int NOT NULL AUTO_INCREMENT,
   `nom_sport` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`Id_Sport`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `sport`
