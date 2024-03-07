@@ -44,8 +44,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-            <button type="submit">Valider</button>
-        </form>
-        </main>
-    </body>
-</html>
