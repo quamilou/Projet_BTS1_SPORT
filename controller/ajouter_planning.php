@@ -2,7 +2,7 @@
 require "../model/CBDD.php";
 session_start();
 
-$idClient = $_POST['idClient'];
+$utilisateurId = $_SESSION['user']['Id_Client'];
 $titre = $_POST['titre'];
 $nom_planning = $_POST['nom_planning'];
 $date_heure = $_POST['date_heure'];
