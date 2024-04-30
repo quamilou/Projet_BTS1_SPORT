@@ -3,6 +3,7 @@ require "../model/CBDD.php";
 session_start();
 
 $utilisateurId = $_SESSION['user']['Id_Client'];
+$stmt = ("SELECT * FROM client");
 $titre = $_POST['titre'];
 $nom_planning = $_POST['nom_planning'];
 $date_heure = $_POST['date_heure'];
