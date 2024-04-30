@@ -17,7 +17,7 @@ session_start();
                 <li><a href="../vue/Personnel.php">Personnel</a></li>
                 <li><a href="../vue/Equipes.php">Equipes</a></li>
                 <li><a href="../vue/Planning.php">Planning</a></li>
-                <li><a href="../vue/Sport.php">Sports</a></li>
+                <li><a href="../vue/Sport.php">Sport</a></li>
                 <li><a href="../controller/deconnexion.php">Déconnexion</a></li>
             </ul>
         </nav>
@@ -82,6 +82,12 @@ session_start();
             ?>
         </form>
         </main>
+    </main>
+    <main>
+        <h2>Ajouter/Modifier/Supprimer</h2>
+        <li><a href="../vue/Ajoute_sport.php">Ajouter</a></li>
+        <li><a href="../vue/Modif_sport.php">Modifier</a></li>
+        <li><a href="../vue/Supp_sport.php">Supprimer</a></li>
     </main>
 </body>
 </html>

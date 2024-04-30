@@ -24,7 +24,7 @@ session_start();
                 <li><a href="../vue/Personnel.php">Personnel</a></li>
                 <li><a href="../vue/Equipes.php">Equipes</a></li>
                 <li><a href="../vue/Planning.php">Planning</a></li>
-                <li><a href="../vue/Sport.php">Sports</a></li>
+                <li><a href="../vue/Sport.php">Sport</a></li>
                 <li><a href="../controller/deconnexion.php">Déconnexion</a></li>
             </ul>
         </nav>
@@ -60,7 +60,7 @@ session_start();
                 <input type="datetime-local" id="date_heure" name="date_heure" required><br>
 
                 <label for="durée">Durée (en minutes):</label>
-                <input type="number" id="durée" name="durée" required min="1"><br>
+                <input type="number" id="duree" name="duree" required min="1"><br>
 
                 <input type="submit" value="Ajouter le Planning">
             </form>
